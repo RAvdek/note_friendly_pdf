@@ -1,13 +1,14 @@
-import os
 import click
 import PyPDF2 as pdf
 
 @click.command()
 @click.argument('src')
-@click.option('-s', '--suffix', type=str, default='notes')
-def create_document(src, suffix):
+def create_document(src):
+    """Takes the `src` file, adds blanks every other page and creates a new file."""
+
+    click.echo(f'Reading from file: {src}')
     outfile_prefix = src.split('.pdf')[0]
-    outfile_name = f'{outfile_prefix}_{suffix}.pdf'
+    outfile_name = f'{outfile_prefix}_notes.pdf'
     pdf_reader = pdf.PdfFileReader(src)
     pdf_writer = pdf.PdfFileWriter()
 
@@ -15,6 +16,7 @@ def create_document(src, suffix):
         pdf_writer.addPage(pdf_reader.getPage(page_number))
         pdf_writer.addBlankPage()
 
+    click.echo(f'Writing to file: {outfile_name}')
     with open(outfile_name, 'wb') as outfile:
         pdf_writer.write(outfile)
 
