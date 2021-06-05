@@ -32,4 +32,7 @@ Now you are ready to use the tool. A help menu will guide you:
 ```
 python main.py --help
 ```
-The only options available allow you to select pages of interest (which might come from a big document).
+The only options available allow you to select pages of interest (which might come from a big document). If you want to only use pages 10-11 and 40-45, use the command:
+```
+python main.py ~/Downloads/2005.11428.pdf -s 10 11 -s 40 45
+```
