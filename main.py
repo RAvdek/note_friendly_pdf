@@ -23,7 +23,7 @@ def create_document(src, selection):
         selected_page_numbers = list(set(selected_page_numbers))
         selected_page_numbers.sort()
     else:
-        selected_page_numbers = [0, input_n_pages]
+        selected_page_numbers = list(range(0, input_n_pages))
     click.echo(
         f'Preparing pages from source file between '
         f'p.{selected_page_numbers[0] + 1}-{selected_page_numbers[-1] + 1}'
